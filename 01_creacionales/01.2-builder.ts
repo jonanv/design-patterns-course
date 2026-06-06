@@ -49,6 +49,11 @@ class QueryBuilder {
     this.table = table;
   }
 
+  public setTable(table: string): QueryBuilder {
+    this.table = table;
+    return this;
+  }
+
   select(...fields: string[]): QueryBuilder {
     throw new Error('Method not implemented.');
   }
