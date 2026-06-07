@@ -54,6 +54,11 @@ class QueryBuilder {
     return this;
   }
 
+  public setFields(fields: string[]): QueryBuilder {
+    this.fields = fields;
+    return this;
+  }
+
   select(...fields: string[]): QueryBuilder {
     throw new Error('Method not implemented.');
   }
