@@ -59,6 +59,11 @@ class QueryBuilder {
     return this;
   }
 
+  public setConditions(conditions: string[]): QueryBuilder {
+    this.conditions = conditions;
+    return this;
+  }
+
   select(...fields: string[]): QueryBuilder {
     throw new Error('Method not implemented.');
   }
