@@ -58,10 +58,9 @@ function main() {
   pokemon1.displayInfo();
   
   const pokemon2 = pokemon1.clone();
-  pokemon2.name = 'Pikachu';
-  pokemon2.type = 'Electrico';
+  pokemon2.name = 'Charmelion';
   pokemon2.level = 5;
-  pokemon2.attacks.push('Ataque rapido');
+  pokemon2.attacks.push('Garra de metal');
   console.log({ pokemon2 });
   pokemon2.displayInfo();
 }
