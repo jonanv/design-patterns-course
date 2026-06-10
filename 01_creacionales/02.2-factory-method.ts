@@ -38,7 +38,7 @@ class SalesReport implements Report {
   // TODO: implementar el método e imprimir en consola:
   // 'Generando reporte de ventas...'
   generate(): void {
-    console.log('Generando reporte de %cventas', COLORS.green);
+    console.log('%cGenerando reporte de ventas...', COLORS.green);
   }
 }
 
@@ -46,7 +46,7 @@ class InventoryReport implements Report {
   // TODO: implementar el método e imprimir en consola:
   // 'Generando reporte de inventario...'
   generate(): void {
-    console.log('Generando reporte de %cinventario', COLORS.orange);
+    console.log('%cGenerando reporte de inventario...', COLORS.orange);
   }
 }
 
