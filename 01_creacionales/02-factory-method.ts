@@ -30,6 +30,12 @@ class BeefHamburger implements Hamburger {
     }
 }
 
+class BeanHamburger implements Hamburger {
+    prepare(): void {
+        console.log('Preparando una hamburguesa de %cfrijol', COLORS.green);
+    }
+}
+
 abstract class Restaurant {
 
     abstract createHamburger(): Hamburger;
@@ -52,9 +58,15 @@ class BeefRestaurant extends Restaurant {
     }
 }
 
+class BeanRestaurant extends Restaurant {
+    override createHamburger(): Hamburger {
+        return new BeanHamburger();
+    }
+}
+
 function main() {
     let restaurant!: Restaurant;
-    const burgerType = prompt('Qué tipo de hamburguesa quieres? (chicken/beef):');
+    const burgerType = prompt('Qué tipo de hamburguesa quieres? (chicken/beef/bean):');
 
     switch (burgerType) {
         case 'chicken':
@@ -62,6 +74,9 @@ function main() {
             break;
         case 'beef':
             restaurant =  new BeefRestaurant();
+            break;
+        case 'bean':
+            restaurant =  new BeanRestaurant();
             break;
     
         default:
