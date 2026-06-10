@@ -74,23 +74,23 @@ class QueryBuilder {
     return this;
   }
 
-  select(...fields: string[]): QueryBuilder {
+  public select(...fields: string[]): QueryBuilder {
     throw new Error('Method not implemented.');
   }
 
-  where(condition: string): QueryBuilder {
+  public where(condition: string): QueryBuilder {
     throw new Error('Method not implemented.');
   }
 
-  orderBy(field: string, direction: 'ASC' | 'DESC' = 'ASC'): QueryBuilder {
+  public orderBy(field: string, direction: 'ASC' | 'DESC' = 'ASC'): QueryBuilder {
     throw new Error('Method not implemented.');
   }
 
-  limit(count: number): QueryBuilder {
+  public limit(count: number): QueryBuilder {
     throw new Error('Method not implemented.');
   }
 
-  execute(): string {
+  public execute(): string {
     // Select id, name, email from users where age > 18 and country = 'Cri' order by name ASC limit 10;
     throw new Error('Method not implemented.');
   }
