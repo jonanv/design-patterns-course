@@ -49,31 +49,6 @@ class QueryBuilder {
     this.table = table;
   }
 
-  public setTable(table: string): QueryBuilder {
-    this.table = table;
-    return this;
-  }
-
-  public setFields(fields: string[]): QueryBuilder {
-    this.fields = fields;
-    return this;
-  }
-
-  public setConditions(conditions: string[]): QueryBuilder {
-    this.conditions = conditions;
-    return this;
-  }
-
-  public setOrderFields(orderFields: string[]): QueryBuilder {
-    this.orderFields = orderFields;
-    return this;
-  }
-
-  public setlimitCount(limitCount: number): QueryBuilder {
-    this.limitCount = limitCount;
-    return this;
-  }
-
   public select(...fields: string[]): QueryBuilder {
     throw new Error('Method not implemented.');
   }
