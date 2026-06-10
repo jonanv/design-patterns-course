@@ -10,6 +10,8 @@
  * https://refactoring.guru/es/design-patterns/prototype
  */
 
+import { COLORS } from "../helpers/colors.ts";
+
 class Pokemon {
   public name: string;
   public type: string;
@@ -27,12 +29,12 @@ class Pokemon {
   public clone(): Pokemon {
     // Los ataques deben de evitar pasarse por referencia, es decir, no deben de ser el mismo arreglo.
     // Completar: Debe devolver un nuevo Pokémon con los mismos atributos
-    return new Pokemon(this.name, this.type, this.level, this.attacks);
+    return new Pokemon(this.name, this.type, this.level, [...this.attacks]);
   }
 
   public displayInfo(): void {
     console.log(
-      `Nombre: ${ this.name }\nTipo: ${ this.type }\nNivel: ${ this.level }\nAtaques: ${ this.attacks.join(', ') }`
+      `Nombre: ${ this.name }\nTipo: ${ this.type }\nNivel: ${ this.level }\nAtaques: ${ this.attacks.join(', ') }\n`
     );
   }
 }
@@ -55,13 +57,16 @@ class Pokemon {
 function main() {
   const pokemon1 = new Pokemon('Charmander', 'Fuego', 1, ['Llamarada', 'Arañazo']);
   console.log({ pokemon1 });
-  pokemon1.displayInfo();
   
   const pokemon2 = pokemon1.clone();
   pokemon2.name = 'Charmelion';
   pokemon2.level = 5;
   pokemon2.attacks.push('Garra de metal');
   console.log({ pokemon2 });
+
+  console.log('\n%cCharmander', COLORS.red);
+  pokemon1.displayInfo();
+  console.log('\n%cCharmeleon', COLORS.orange);
   pokemon2.displayInfo();
 }
 
