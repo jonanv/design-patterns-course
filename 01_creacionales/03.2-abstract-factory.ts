@@ -45,7 +45,7 @@ class ElectricCar implements Vehicle {
   // Implementación del método assemble
   // 'Ensamblando un auto eléctrico'
   assemble(): void {
-    console.log('Ensamblando un %cauto eléctrico', COLORS.yellow);
+    console.log('Ensamblando un %cauto eléctrico', COLORS.green);
   }
 }
 
@@ -53,7 +53,7 @@ class GasCar implements Vehicle {
   // Implementación del método assemble
   // 'Ensamblando un auto de combustión'
   assemble(): void {
-    console.log('Ensamblando un %cauto de combustión', COLORS.blue);
+    console.log('Ensamblando un %cauto de combustión', COLORS.red);
   }
 }
 
@@ -69,7 +69,7 @@ class GasEngine implements Engine {
   // Implementación del método start
   // 'Arrancando motor de combustión'
   start(): void {
-    console.log('Arrancando %cmotor de combustión', COLORS.orange);
+    console.log('Arrancando %cmotor de combustión', COLORS.red);
   }
 }
 
