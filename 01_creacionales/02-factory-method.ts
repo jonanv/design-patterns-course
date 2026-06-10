@@ -18,7 +18,7 @@ interface Hamburger {
     prepare(): void;
 }
 
-class ChickenBurger implements Hamburger {
+class ChickenHamburger implements Hamburger {
     prepare(): void {
         console.log('Preparando una hamburguesa de %cpollo', COLORS.yellow);
     }
@@ -27,5 +27,27 @@ class ChickenBurger implements Hamburger {
 class BeefHamburger implements Hamburger {
     prepare(): void {
         console.log('Preparando una hamburguesa de %cres', COLORS.brown);
+    }
+}
+
+abstract class Restaurant {
+
+    abstract createHamburger(): Hamburger;
+
+    public orderHamburger(): void {
+        const hamburger = this.createHamburger();
+        hamburger.prepare();
+    }
+}
+
+class ChickenRestaurant extends Restaurant {
+    override createHamburger(): Hamburger {
+        return new ChickenHamburger();
+    }
+}
+
+class BeefRestaurant extends Restaurant {
+    override createHamburger(): Hamburger {
+        return new BeefHamburger();
     }
 }
