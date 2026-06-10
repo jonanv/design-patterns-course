@@ -64,6 +64,16 @@ class QueryBuilder {
     return this;
   }
 
+  public setOrderFields(orderFields: string[]): QueryBuilder {
+    this.orderFields = orderFields;
+    return this;
+  }
+
+  public setlimitCount(limitCount: number): QueryBuilder {
+    this.limitCount = limitCount;
+    return this;
+  }
+
   select(...fields: string[]): QueryBuilder {
     throw new Error('Method not implemented.');
   }
