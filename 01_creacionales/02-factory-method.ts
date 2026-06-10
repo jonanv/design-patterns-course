@@ -51,3 +51,24 @@ class BeefRestaurant extends Restaurant {
         return new BeefHamburger();
     }
 }
+
+function main() {
+    let restaurant!: Restaurant;
+    const burgerType = prompt('Qué tipo de hamburguesa quieres? (chicken/beef):');
+
+    switch (burgerType) {
+        case 'chicken':
+            restaurant =  new ChickenRestaurant();
+            break;
+        case 'beef':
+            restaurant =  new BeefRestaurant();
+            break;
+    
+        default:
+            throw new Error("Opción no válida");
+    }
+    
+    restaurant.orderHamburger();
+}
+
+main();
