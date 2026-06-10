@@ -30,13 +30,13 @@ interface Drink {
 
 class ChickenHamburger implements Hamburger {
     prepare(): void {
-        console.log('Preparando hamburgeusa de %cPollo', COLORS.yellow);
+        console.log('Preparando hamburguesa de %cPollo', COLORS.yellow);
     }
 }
 
 class BeefHamburger implements Hamburger {
     prepare(): void {
-        console.log('Preparando hamburgeusa de %Res', COLORS.red);
+        console.log('Preparando hamburguesa de %cRes', COLORS.red);
     }
 }
 
