@@ -71,7 +71,19 @@ class QueryBuilder {
 
   public execute(): string {
     // Select id, name, email from users where age > 18 and country = 'Cri' order by name ASC limit 10;
-    throw new Error('Method not implemented.');
+    return `SELECT ${ this.fields.length > 0 
+                    ? this.fields.join().replaceAll(',', ', ')
+                    : '*' }
+            FROM ${ this.table } 
+            WHERE ${ this.conditions.length > 0 
+                  ? this.conditions.join().replaceAll(',', ' AND ')
+                  : ' ' }
+            ${ this.orderFields.length > 0 
+              ? this.orderFields.join(', ') 
+              : '' } 
+            ${ this.limitCount
+              ? 'LIMIT ' + this.limitCount
+              : '' }`;
   }
 }
 
@@ -81,7 +93,8 @@ function main() {
     .where('age > 18')
     .where("country = 'Cri'") // Esto debe de hacer una condición AND
     .orderBy('name', 'ASC')
-    .limit(10)
+    .orderBy('age', 'DESC')
+    .limit(100)
     .execute();
 
   console.log('%cConsulta:\n', COLORS.red);
