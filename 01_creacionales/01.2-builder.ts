@@ -50,19 +50,23 @@ class QueryBuilder {
   }
 
   public select(...fields: string[]): QueryBuilder {
-    throw new Error('Method not implemented.');
+    this.fields = fields;
+    return this;
   }
 
   public where(condition: string): QueryBuilder {
-    throw new Error('Method not implemented.');
+    this.conditions.push(condition);
+    return this;
   }
 
   public orderBy(field: string, direction: 'ASC' | 'DESC' = 'ASC'): QueryBuilder {
-    throw new Error('Method not implemented.');
+    this.orderFields.push(`ORDER BY ${ field } ${ direction.toUpperCase() }`);
+    return this;
   }
 
   public limit(count: number): QueryBuilder {
-    throw new Error('Method not implemented.');
+    this.limitCount = count;
+    return this; 
   }
 
   public execute(): string {
