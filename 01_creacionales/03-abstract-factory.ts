@@ -16,4 +16,69 @@
  *  El propósito del Abstract Factory es crear familias de objetos relacionados
  *  (en este caso, hamburguesas y bebidas) sin especificar las clases concretas
  *  de cada uno de esos objetos en el código principal.
- */
+*/
+
+import { COLORS } from "../helpers/colors.ts";
+
+interface Hamburger {
+    prepare(): void;
+}
+
+interface Drink {
+    pour(): void;
+}
+
+class ChickenHamburger implements Hamburger {
+    prepare(): void {
+        console.log('Preparando hamburgeusa de %cPollo', COLORS.yellow);
+    }
+}
+
+class BeefHamburger implements Hamburger {
+    prepare(): void {
+        console.log('Preparando hamburgeusa de %Res', COLORS.red);
+    }
+}
+
+class Water implements Drink {
+    pour(): void {
+        console.log('Sirviendo bebida %cAgua', COLORS.blue);
+    }
+}
+
+class Soda implements Drink {
+    pour(): void {
+        console.log('Sirviendo bebida %cGaseosa', COLORS.pink);
+    }
+}
+
+abstract class RestaurantFactory {
+    protected abstract createHamburger(): Hamburger;
+    protected abstract createDrink(): Drink;
+}
+
+class FastFootRestaurantFactory extends RestaurantFactory {
+    protected override createHamburger(): Hamburger {
+        return new BeefHamburger();
+    }
+
+    protected override createDrink(): Drink {
+        return new Soda();
+    }
+}
+
+class HealthyRestaurantFactory extends RestaurantFactory {
+    protected override createHamburger(): Hamburger {
+        return new ChickenHamburger();
+    }
+
+    protected override createDrink(): Drink {
+        return new Water();
+    }
+}
+
+function main() {
+
+}
+
+main();
