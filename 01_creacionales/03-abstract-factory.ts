@@ -53,26 +53,26 @@ class Soda implements Drink {
 }
 
 abstract class RestaurantFactory {
-    protected abstract createHamburger(): Hamburger;
-    protected abstract createDrink(): Drink;
+    abstract createHamburger(): Hamburger;
+    abstract createDrink(): Drink;
 }
 
 class FastFootRestaurantFactory extends RestaurantFactory {
-    protected override createHamburger(): Hamburger {
+    override createHamburger(): Hamburger {
         return new BeefHamburger();
     }
 
-    protected override createDrink(): Drink {
+    override createDrink(): Drink {
         return new Soda();
     }
 }
 
 class HealthyRestaurantFactory extends RestaurantFactory {
-    protected override createHamburger(): Hamburger {
+    override createHamburger(): Hamburger {
         return new ChickenHamburger();
     }
 
-    protected override createDrink(): Drink {
+    override createDrink(): Drink {
         return new Water();
     }
 }
