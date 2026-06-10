@@ -11,26 +11,28 @@
  */
 
 class Pokemon {
-  name: string;
-  type: string;
-  level: number;
-  attacks: string[];
+  public name: string;
+  public type: string;
+  public level: number;
+  public attacks: string[];
 
   constructor(name: string, type: string, level: number, attacks: string[]) {
-    throw new Error('Method not implemented.');
+    this.name = name;
+    this.type = type;
+    this.level = level;
+    this.attacks = attacks;
   }
 
   // Método para clonar el Pokémon
-  clone(): Pokemon {
+  public clone(): Pokemon {
     // Los ataques deben de evitar pasarse por referencia, es decir, no deben de ser el mismo arreglo.
     // Completar: Debe devolver un nuevo Pokémon con los mismos atributos
+    return new Pokemon(this.name, this.type, this.level, this.attacks);
   }
 
-  displayInfo(): void {
+  public displayInfo(): void {
     console.log(
-      `Nombre: ${this.name}\nTipo: ${this.type}\nNivel: ${
-        this.level
-      }\nAtaques: ${this.attacks.join(', ')}`
+      `Nombre: ${ this.name }\nTipo: ${ this.type }\nNivel: ${ this.level }\nAtaques: ${ this.attacks.join(', ') }`
     );
   }
 }
@@ -49,3 +51,19 @@ class Pokemon {
 
 // basePokemon.displayInfo(); // Aquí no debe de aparecer "Lanzallamas"
 // clone1.displayInfo();
+
+function main() {
+  const pokemon1 = new Pokemon('Charmander', 'Fuego', 1, ['Llamarada', 'Arañazo']);
+  console.log({ pokemon1 });
+  pokemon1.displayInfo();
+  
+  const pokemon2 = pokemon1.clone();
+  pokemon2.name = 'Pikachu';
+  pokemon2.type = 'Electrico';
+  pokemon2.level = 5;
+  pokemon2.attacks.push('Ataque rapido');
+  console.log({ pokemon2 });
+  pokemon2.displayInfo();
+}
+
+main();
