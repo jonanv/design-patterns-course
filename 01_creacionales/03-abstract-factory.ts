@@ -77,8 +77,16 @@ class HealthyRestaurantFactory extends RestaurantFactory {
     }
 }
 
-function main() {
+function main(factory: RestaurantFactory) {
+    const hamburger =  factory.createHamburger();
+    const drink = factory.createDrink();
 
+    hamburger.prepare();
+    drink.pour();
 }
 
-main();
+console.log('\n%cPedido del menu regular: ', COLORS.green);
+main(new FastFootRestaurantFactory());
+
+console.log('\n%cPedido del menu regular: ', COLORS.green);
+main(new HealthyRestaurantFactory());
