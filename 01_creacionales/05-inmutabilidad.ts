@@ -75,6 +75,29 @@ function main() {
 
     history.save(editorState);
     console.log('%cEstado inicial', COLORS.blue);
+    editorState.displayState();
+
+    editorState = editorState.copyWith({
+        content: "console.log('Hola mundo'); \nconsole.log('Nueva línea')",
+        cursorPosition: 3,
+        unsavedChanges: true
+    });
+    history.save(editorState);
+    console.log('%cDespués del primer cambio', COLORS.blue);
+    editorState.displayState();
+    
+    editorState = editorState.copyWith({ cursorPosition: 5 });
+    history.save(editorState);
+    console.log('%cDespués del segundo cambio', COLORS.blue);
+    editorState.displayState();
+
+    console.log('%cDespués del Undo', COLORS.blue);
+    editorState = history.undo()!;
+    editorState.displayState();
+
+    console.log('%cDespués del Redo', COLORS.blue);
+    editorState = history.redo()!;
+    editorState.displayState();
 }
 
 main();
