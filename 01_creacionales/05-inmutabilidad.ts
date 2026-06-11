@@ -10,19 +10,19 @@ import { COLORS } from "../helpers/colors.ts";
 
 class CodeEditorState {
     readonly content: string;
-    readonly cursorPointer: number;
+    readonly cursorPosition: number;
     readonly unsavedChanges: boolean;
 
-    constructor(content: string, cursorPointer: number, unsavedChanges: boolean) {
+    constructor(content: string, cursorPosition: number, unsavedChanges: boolean) {
         this.content = content;
-        this.cursorPointer = cursorPointer;
+        this.cursorPosition = cursorPosition;
         this.unsavedChanges = unsavedChanges;
     }
 
-    public copyWith({content, cursorPointer, unsavedChanges}: Partial<CodeEditorState>): CodeEditorState {
+    public copyWith({content, cursorPosition, unsavedChanges}: Partial<CodeEditorState>): CodeEditorState {
         return new CodeEditorState(
             content ?? this.content,
-            cursorPointer ?? this.cursorPointer,
+            cursorPosition ?? this.cursorPosition,
             unsavedChanges ?? this.unsavedChanges
         );
     }
@@ -31,8 +31,8 @@ class CodeEditorState {
         console.log('%cEstado del editor: ', COLORS.green);
         console.log(`
             Contenido: ${ this.content }
-            Cursor pos: ${ this.cursorPointer }
-            Unsaved changes: ${ this.unsavedChanges }
+            Cursor Position: ${ this.cursorPosition }
+            Unsaved Changes: ${ this.unsavedChanges }
         `);
     }
 }
