@@ -50,6 +50,15 @@ class CodeEditorHistory {
         this.currentIndex++;
     }
 
+    public undo(): CodeEditorState | null {
+        if (this.currentIndex > 0) {
+            this.currentIndex--;
+            return this.history[this.currentIndex];
+        }
+
+        return null;
+    }
+
     public redo(): CodeEditorState | null {
         if (this.currentIndex < this.history.length -1) {
             this.currentIndex++;
