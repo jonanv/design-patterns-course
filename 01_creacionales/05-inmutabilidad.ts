@@ -59,3 +59,13 @@ class CodeEditorHistory {
         return null;
     }
 }
+
+function main() {
+    const history = new CodeEditorHistory();
+    let editorState = new CodeEditorState("console.log('Hola mundo');", 2, false);
+
+    history.save(editorState);
+    console.log('%cEstado inicial', COLORS.blue);
+}
+
+main();
