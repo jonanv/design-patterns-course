@@ -8,7 +8,7 @@
 */
 import { COLORS } from "../helpers/colors.ts";
 
-class codeEditorState {
+class CodeEditorState {
     readonly content: string;
     readonly cursorPointer: number;
     readonly unsavedChanges: boolean;
