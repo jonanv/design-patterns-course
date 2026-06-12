@@ -10,21 +10,44 @@
  * https://refactoring.guru/es/design-patterns/singleton
  */
 
+import { COLORS } from "../helpers/colors.ts";
+
 
 class DragonBalls {
     private static instance: DragonBalls;
+    private ballsCollected: number;
 
     private constructor() {
-        
+        this.ballsCollected = 0;
     }
 
     static getInstance(): DragonBalls {
         if (!DragonBalls.instance) {
-            console.log('No existe y se crea');
             DragonBalls.instance = new DragonBalls();
+            console.log('%cLas esferas de Dragon han sido creadas', COLORS.green);
         }
-        console.log('Ya existe');
+
         return DragonBalls.instance;
+    }
+
+    private collectBalls(): void {
+        if (this.ballsCollected < 7) {
+            this.ballsCollected++;
+            console.log(`Esfera recolectada. Total esferas: ${ this.ballsCollected }`);
+            return;
+        }
+
+        console.log('Ya se han recolectado las 7 esferas del Dragón, invoca a Shen-long');
+    }
+
+    private summonShenLong(): void {
+        if (this.ballsCollected === 7) {
+            console.log('Shen-long ha sido invocado, pide tu deseo!');
+            this.ballsCollected = 0;
+            return;
+        }
+
+        console.log(`Aún faltan ${ 7 - this.ballsCollected } esferas del Dragón`);
     }
 }
 
