@@ -30,7 +30,7 @@ class DragonBalls {
         return DragonBalls.instance;
     }
 
-    private collectBalls(): void {
+    public collectBalls(): void {
         if (this.ballsCollected < 7) {
             this.ballsCollected++;
             console.log(`Esfera recolectada. Total esferas: ${ this.ballsCollected }`);
@@ -40,9 +40,9 @@ class DragonBalls {
         console.log('Ya se han recolectado las 7 esferas del Dragón, invoca a Shen-long');
     }
 
-    private summonShenLong(): void {
+    public summonShenLong(): void {
         if (this.ballsCollected === 7) {
-            console.log('Shen-long ha sido invocado, pide tu deseo!');
+            console.log('\n%cShen-long ha sido invocado, pide tu deseo!\n', COLORS.yellow);
             this.ballsCollected = 0;
             return;
         }
