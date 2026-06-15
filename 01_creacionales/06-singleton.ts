@@ -47,17 +47,36 @@ class DragonBalls {
             return;
         }
 
-        console.log(`Aún faltan ${ 7 - this.ballsCollected } esferas del Dragón`);
+        console.log(`\nAún faltan ${ 7 - this.ballsCollected } esferas del Dragón\n`);
     }
 }
 
-function main() {
-    const dragonBall1 = DragonBalls.getInstance();
-    console.log(dragonBall1);
+// function main() {
+//     const dragonBall1 = DragonBalls.getInstance();
+//     console.log(dragonBall1);
 
-    const dragonBall2 = DragonBalls.getInstance();
-    console.log(dragonBall2);
+//     const dragonBall2 = DragonBalls.getInstance();
+//     console.log(dragonBall2);
+// }
+
+function main() {
+    const gokuDragonBalls = DragonBalls.getInstance();
+
+    gokuDragonBalls.collectBalls();
+    gokuDragonBalls.collectBalls();
+    gokuDragonBalls.collectBalls();
+    
+    gokuDragonBalls.summonShenLong();
+    
+    const vegetaDragonBalls = DragonBalls.getInstance();
+    
+    vegetaDragonBalls.collectBalls();
+    vegetaDragonBalls.collectBalls();
+    vegetaDragonBalls.collectBalls();
+    vegetaDragonBalls.collectBalls();
+
+    gokuDragonBalls.summonShenLong();
+    vegetaDragonBalls.summonShenLong();
 }
 
 main();
-
