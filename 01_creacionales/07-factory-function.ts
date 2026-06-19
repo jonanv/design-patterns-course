@@ -21,5 +21,17 @@ function createGreeter(lang: Language): (name: string) => void {
             fr: `Bonjour, %c${ name }!`
         }
         return console.log(messages[lang], COLORS.red);
-    }
+    };
 }
+
+function main() {
+    const spanishGreeter = createGreeter('es');
+    const englishGreeter = createGreeter('en');
+    const frenchGreeter = createGreeter('fr');
+
+    spanishGreeter('Giovanni');
+    englishGreeter('Alice');
+    frenchGreeter('Pierre');
+}
+
+main();
