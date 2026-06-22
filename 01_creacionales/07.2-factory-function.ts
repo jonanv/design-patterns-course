@@ -34,11 +34,12 @@ function createLogger(level: LogLevel): (level: string) => void {
   // Retorna una función que recibe el "message" como argumento
   // Completar: implementar el logger con formato y color para cada nivel
   return function(message: string): void {
+    const timestamp = formatDate(new Date());
 
     const logger = {
-      info: `[INFO:${ formatDate(new Date()) }] %c${ message }`,
-      warn: `[WARNING:${ formatDate(new Date()) }] %c${ message }`,
-      error: `[ERROR:${ formatDate(new Date()) }] %c${ message }`
+      info: `[INFO:${ timestamp }] %c${ message }`,
+      warn: `[WARNING:${ timestamp }] %c${ message }`,
+      error: `[ERROR:${ timestamp }] %c${ message }`
     }
 
     const loggerColor = {
