@@ -14,6 +14,11 @@ deno 01-builder.ts
 deno --watch 01-builder.ts
 ```
 
+### Install ✅
+```ts
+deno add jsr:@deno-library/logger
+```
+
 ## Design Patterns
 
 ### Creationals
@@ -24,3 +29,7 @@ deno --watch 01-builder.ts
 5. Inmutability
 6. Singleton
 7. Factory function
+
+### Structurals
+1. Adapter
+2. 
