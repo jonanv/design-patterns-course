@@ -14,7 +14,7 @@ deno 01-builder.ts
 deno --watch 01-builder.ts
 ```
 
-### Install ✅
+### Add dependences ✅
 ```ts
 deno add jsr:@deno-library/logger
 ```
