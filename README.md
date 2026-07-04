@@ -32,4 +32,20 @@ deno add jsr:@deno-library/logger
 
 ### Structurals
 1. Adapter
-2. 
+2. Bridge
+3. Composite
+4. Decorator
+5. Facade
+6. Flywight
+7. Proxy
+
+### Behavior
+1. Chain of Responsablity
+2. Command
+3. Iterator
+4. Mediator
+5. Observer
+6. State
+7. Strategy
+8. Template Method
+9. Visitor
