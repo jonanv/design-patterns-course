@@ -22,9 +22,21 @@ class SwordAttack implements Ability {
     }
 }
 
+class AxeAttack implements Ability {
+    use(): void {
+        console.log('Ataca con una %chacha despiadamente', COLORS.red);
+    }
+}
+
 class MagicSpell implements Ability {
     use(): void {
         console.log('Lanza un hechizo %cmágico poderoso', COLORS.green);
+    }
+}
+
+class FireballSpell implements Ability {
+    use(): void {
+        console.log('Lanza un hechizo %cbola de juego', COLORS.yellow);
     }
 }
 
@@ -55,3 +67,19 @@ class Mage extends Character {
         this.ability.use();
     }  
 }
+
+function main() {
+    const warrior = new Warrior(new SwordAttack());
+    warrior.performAbility();
+    
+    warrior.setAbility(new AxeAttack());
+    warrior.performAbility();
+
+    const mage = new Mage(new MagicSpell());
+    mage.performAbility();
+    
+    mage.setAbility(new FireballSpell());
+    mage.performAbility();
+}
+
+main();
