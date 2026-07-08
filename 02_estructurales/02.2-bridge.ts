@@ -51,7 +51,7 @@ abstract class Notification {
   }
 
   abstract notify(message: string): void;
-  abstract setChannel(channe: NotificationChannel): void;
+  abstract setChannel(channel: NotificationChannel): void;
 }
 
 // 4. Clases Concretas de Notificaciones
