@@ -47,11 +47,18 @@ class MenuCategory implements MenuComponent {
   // TODO: Crear dos propiedades privadas: name y items
   // Name sting y items arreglo de MenuComponent
   // Name es recibida en el constructor, items se inicializa como un arreglo vacío
+  private name: string;
+  private items: MenuComponent[];
+
+  constructor(name: string) {
+    this.name = name;
+    this.items = [];
+  }
 
   //TODO: Sobrecarga de operadores - Item puede ser MenuComponent o un arreglo de MenuComponent
-  add(item: unknown): void {
+  add(item: any): void {
     // TODO: Implementar la sobrecarga de operadores
-    throw new Error('Method not implemented.');
+    this.items.push(item);
   }
 
   showDetails(indent: string = ''): void {
