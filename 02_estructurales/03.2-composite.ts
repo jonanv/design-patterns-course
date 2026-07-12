@@ -48,22 +48,27 @@ class MenuCategory implements MenuComponent {
   // Name sting y items arreglo de MenuComponent
   // Name es recibida en el constructor, items se inicializa como un arreglo vacío
   private name: string;
-  private items: MenuComponent[];
+  private items: MenuComponent[] = [];
 
   constructor(name: string) {
     this.name = name;
-    this.items = [];
   }
 
   //TODO: Sobrecarga de operadores - Item puede ser MenuComponent o un arreglo de MenuComponent
-  add(item: any): void {
+  add(item: MenuComponent | MenuComponent[]): void {
     // TODO: Implementar la sobrecarga de operadores
+    if (Array.isArray(item)) {
+      this.items.push(...item);
+      return;
+    }
+    
     this.items.push(item);
   }
 
   showDetails(indent: string = ''): void {
     console.log(`%c${indent}+ ${this.name}`, COLORS.blue);
     // TODO: Implementar foreach
+    this.items.forEach((item) => item.showDetails(indent + ' '));
   }
 }
 
