@@ -12,7 +12,9 @@
  * https://refactoring.guru/es/design-patterns/facade
  */
 
-class Proyector {
+import { COLORS } from "../helpers/colors.ts";
+
+class Projector {
     turnOn(): void {
         console.log('Encendiendo proyector');
     }
@@ -59,3 +61,52 @@ class PopcornMaker {
         console.log(`Deteniendo palomitas`);
     }
 }
+
+interface HomeTheaterFacadeOptions {
+    projector: Projector;
+    soundSystem: SoundSystem;
+    videoPlayer: VideoPlayer;
+    popcornMaker: PopcornMaker;
+}
+
+class HomeTheaterFacade {
+    private projector: Projector;
+    private soundSystem: SoundSystem;
+    private videoPlayer: VideoPlayer;
+    private popcornMaker: PopcornMaker;
+
+    constructor({projector, soundSystem, videoPlayer, popcornMaker}: HomeTheaterFacadeOptions) {
+        this.projector = projector;
+        this.soundSystem = soundSystem;
+        this.videoPlayer = videoPlayer;
+        this.popcornMaker = popcornMaker;
+    }
+
+    watchMovie(movie: string): void {
+        console.log('%cPreparando para la película', COLORS.blue);
+        this.projector.turnOn();
+        this.soundSystem.on();
+        this.popcornMaker.popingPopcorn();
+        this.videoPlayer.on();
+        this.videoPlayer.play(movie);
+
+        console.log('%cDisfrute la película', COLORS.blue);
+    }
+
+    endWatchMovie(): void {
+        console.log('%cDeteniendo la película', COLORS.yellow);
+        this.videoPlayer.stop();
+        this.videoPlayer.off();
+        this.popcornMaker.turnOffPopingPorncork();
+        this.soundSystem.off();
+        this.projector.turnOff();
+
+        console.log('%cPelícula detenida', COLORS.yellow);
+    }
+}
+
+function main(): void {
+
+}
+
+main();
