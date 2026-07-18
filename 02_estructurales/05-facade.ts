@@ -83,7 +83,7 @@ class HomeTheaterFacade {
     }
 
     watchMovie(movie: string): void {
-        console.log('%cPreparando para la película', COLORS.blue);
+        console.log('%c\nPreparando para la película', COLORS.blue);
         this.projector.turnOn();
         this.soundSystem.on();
         this.popcornMaker.popingPopcorn();
@@ -94,19 +94,27 @@ class HomeTheaterFacade {
     }
 
     endWatchMovie(): void {
-        console.log('%cDeteniendo la película', COLORS.yellow);
+        console.log('%c\n\nPreparando para detener película', COLORS.yellow);
         this.videoPlayer.stop();
         this.videoPlayer.off();
         this.popcornMaker.turnOffPopingPorncork();
         this.soundSystem.off();
         this.projector.turnOff();
 
-        console.log('%cPelícula detenida', COLORS.yellow);
+        console.log('%cSistema apagado\n', COLORS.yellow);
     }
 }
 
 function main(): void {
+    const projector = new Projector();
+    const soundSystem = new SoundSystem();
+    const videoPlayer = new VideoPlayer();
+    const popcornMaker = new PopcornMaker();
 
+    const homeTheater = new HomeTheaterFacade({projector, soundSystem, videoPlayer, popcornMaker});
+
+    homeTheater.watchMovie('The Avengers III');
+    homeTheater.endWatchMovie();
 }
 
 main();
