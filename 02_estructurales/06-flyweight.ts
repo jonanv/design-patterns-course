@@ -40,6 +40,7 @@ class LocationFactory {
 
     getLocationIcon(type: string): LocationIcon {
         if (!this.icons[type]) {
+            console.log(`%cCreando una nueva instancia del ícono de ${ type }`, COLORS.green);
             const iconImage = `imagen_de_${ type.toLocaleLowerCase() }.png`;
             this.icons[type] = new LocationIcon(type, iconImage);
         }
@@ -47,3 +48,31 @@ class LocationFactory {
     }
 
 }
+
+class MapLocation {
+    private coordinates: { x: number, y: number };
+    private icon: LocationIcon;
+
+    constructor(x: number, y: number, icon: LocationIcon) {
+        this.coordinates = { x, y };
+        this.icon = icon;
+    }
+
+    display(): void {
+        this.icon.display(this.coordinates);
+    }
+}
+
+function main(): void {
+    const factory = new LocationFactory();
+
+    const location = [
+        new MapLocation(10, 20, factory.getLocationIcon('hospital')),
+        new MapLocation(10, 20, factory.getLocationIcon('escuela')),
+        new MapLocation(10, 20, factory.getLocationIcon('hospital')),
+    ];
+
+    location.forEach((location) => location.display());
+}
+
+main();
