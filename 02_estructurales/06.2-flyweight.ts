@@ -47,7 +47,7 @@ class BulletTypeFactory {
 
     const key = `${ name.toLowerCase() }-${ damage }-${ color.toLowerCase() }`;
     if (!this.bulletTypes[key]) {
-      console.log(`%cCreando una nuevo tipo de bala ${ name }`, COLORS.green);
+      console.log(`%cCreando una nuevo tipo de bala ${ key }`, COLORS.green);
       this.bulletTypes[key] = new BulletType(name, damage, color);
     }
 
