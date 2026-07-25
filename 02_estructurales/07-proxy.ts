@@ -28,14 +28,14 @@ interface Room {
 
 class SecretRoom implements Room {
     enter(player: Player): void {
-        console.log(`Bienvenido a la sala secreta ${ player.name }`, COLORS.green);
+        console.log(`%cBienvenido a la sala secreta ${ player.name }`, COLORS.green);
         console.log('Un gran enemigo te espera');
     }
 }
 
 // 3. Clase Proxy - Magic Portal
 class MagicPortal implements Room {
-    private secrectRoom: SecretRoom;
+    private secrectRoom: Room;
     private minimunLevel: number = 10;
 
     constructor(room: Room) {
@@ -52,3 +52,19 @@ class MagicPortal implements Room {
     }
 
 }
+
+function main(): void {
+
+    const portal = new MagicPortal(new SecretRoom()); // Proxy
+
+    const player1 = new Player('Aventurero A', 5);
+    const player2 = new Player('Aventurero B', 15);
+
+    console.log('%cAventurero A intenta entrar al portal', COLORS.blue);
+    portal.enter(player1);
+
+    console.log('%c\nAventurero B intenta entrar al portal', COLORS.green);
+    portal.enter(player2);
+}
+
+main();
