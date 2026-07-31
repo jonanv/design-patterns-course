@@ -41,7 +41,7 @@ class BasicSupport extends BaseHandler {
             return;
         }
         
-        console.log('%cSoporte básico: Pasando el problema a soporte avanzado', COLORS.blue);
+        console.log('%cSoporte básico: Pasando el problema a soporte avanzado', COLORS.yellow);
         super.handler(request);
     }
 }
@@ -55,13 +55,13 @@ class TechnicSupport extends BaseHandler {
             return;
         }
         
-        console.log('%cSoporte técnico: Pasando el problema a soporte avanzado', COLORS.blue);
+        console.log('%cSoporte técnico: Pasando el problema a soporte avanzado', COLORS.yellow);
         super.handler(request);
     }
 }
 
 // Soporte avanzado
-class AdvanceSupport extends BaseHandler {
+class AdvancedSupport extends BaseHandler {
 
     override handler(request: string): void {
         if (request === 'avanzado') {
@@ -69,7 +69,7 @@ class AdvanceSupport extends BaseHandler {
             return;
         }
         
-        console.log('%cSoporte avanzado: Pasando el problema a soporte avanzado', COLORS.blue);
+        console.log('%cSoporte avanzado: No hay nada que hacer ... bye bye', COLORS.red);
         super.handler(request);
     }
 }
