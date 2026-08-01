@@ -70,6 +70,5 @@ class AdvancedSupport extends BaseHandler {
         }
         
         console.log('%cSoporte avanzado: No hay nada que hacer ... bye bye', COLORS.red);
-        super.handler(request);
     }
 }
