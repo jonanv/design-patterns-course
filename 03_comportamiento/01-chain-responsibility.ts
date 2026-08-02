@@ -41,7 +41,7 @@ class BasicSupport extends BaseHandler {
             return;
         }
         
-        console.log('%cSoporte básico: Pasando el problema a soporte avanzado', COLORS.yellow);
+        console.log('%cSoporte básico: Pasando el problema a soporte técnico', COLORS.yellow);
         super.handler(request);
     }
 }
@@ -72,3 +72,18 @@ class AdvancedSupport extends BaseHandler {
         console.log('%cSoporte avanzado: No hay nada que hacer ... bye bye', COLORS.red);
     }
 }
+
+function main(): void {
+    const basicSupport = new BasicSupport();
+    const technicSupport = new TechnicSupport();
+    const advancedSupport = new AdvancedSupport();
+
+    basicSupport.setNext(technicSupport).setNext(advancedSupport);
+
+    basicSupport.handler('basico');
+    basicSupport.handler('tecnico');
+    basicSupport.handler('avanzado');
+    basicSupport.handler('experto');
+}
+
+main();
