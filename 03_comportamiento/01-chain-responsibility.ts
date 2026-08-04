@@ -65,7 +65,7 @@ class AdvancedSupport extends BaseHandler {
 
     override handler(request: string): void {
         if (request === 'avanzado') {
-            console.log('%cSoporte técnico: Resolviendo problema avanzado', COLORS.green);
+            console.log('%cSoporte avanzado: Resolviendo problema avanzado', COLORS.green);
             return;
         }
         
