@@ -47,7 +47,7 @@ class Supervisor extends BaseApprover {
   // TODO: Si el monto es mayor a 1000, pasar la solicitud al siguiente aprobador
   override approveRequest(amount: number): void {
     if (amount <= 1000) {
-      console.log('%cSupervisor: Resuelto por el Supervisor', COLORS.green);
+      console.log(`%cSupervisor aprueba la cantidad de $${ amount }`, COLORS.green);
       return;
     }
 
@@ -62,7 +62,7 @@ class Manager extends BaseApprover {
 
   override approveRequest(amount: number): void {
     if (amount <= 5000) {
-      console.log('%cManager: Resuelto por el Manager', COLORS.green);
+      console.log(`%cManager aprueba la cantidad de $${ amount }`, COLORS.green);
       return;
     }
 
@@ -75,7 +75,7 @@ class Director extends BaseApprover {
   // TODO: Implementar el método approveRequest si el monto
   override approveRequest(amount: number): void {
     if (amount > 5000) {
-      console.log('%cDirector: Resuelto por el Director', COLORS.green);
+      console.log(`%cDirector aprueba la cantidad de $${ amount }`, COLORS.green);
       return;
     }
   }
