@@ -13,6 +13,28 @@
  *
  */
 
-interface Prueba {
-    
+import { COLORS } from "../helpers/colors.ts";
+
+interface Command {
+    excecute(): void;
+}
+
+class Light {
+    turnOn(): void {
+        console.log('%cLa luz esta encendida', COLORS.yellow);
+    }
+
+    turnOff(): void {
+        console.log('%cLa luz esta apagada', COLORS.yellow);
+    }
+}
+
+class Fan {
+    on(): void {
+        console.log('%cEl ventilador esta encendido', COLORS.green);
+    }
+
+    off(): void {
+        console.log('%cEl ventilador esta apagado', COLORS.green);
+    }
 }
