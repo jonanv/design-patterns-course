@@ -38,3 +38,35 @@ class Fan {
         console.log('%cEl ventilador esta apagado', COLORS.green);
     }
 }
+
+class LightOnCommand implements Command {
+    constructor(private light: Light) {}
+    
+    excecute(): void {
+        this.light.turnOn();
+    }
+}
+
+class LightOffCommand implements Command {
+    constructor(private light: Light) {}
+
+    excecute(): void {
+        this.light.turnOff();
+    }
+}
+
+class FanOnCommand implements Command {
+    constructor(private fan: Fan) {}
+    
+    excecute(): void {
+        this.fan.on();
+    }
+}
+
+class FanOffCommand implements Command {
+    constructor(private fan: Fan) {}
+
+    excecute(): void {
+        this.fan.off();
+    }
+}
