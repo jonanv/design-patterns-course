@@ -70,3 +70,20 @@ class FanOffCommand implements Command {
         this.fan.off();
     }
 }
+
+class RemoteControl {
+    private commands: Record<string, Command> = {};
+
+    setCommands(button: string, command: Command): void {
+        this.commands[button] = command;
+    }
+
+    pressButton(button: string): void {
+        if (this.commands[button]) {
+            this.commands[button].excecute();
+            return;
+        }
+
+        console.log('%cNo se ha asignado comando a ese boton', COLORS.red);
+    }
+}
