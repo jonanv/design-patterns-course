@@ -13,6 +13,7 @@
  *
  */
 
+import console from "node:console";
 import { COLORS } from "../helpers/colors.ts";
 
 interface Command {
@@ -84,6 +85,51 @@ class RemoteControl {
             return;
         }
 
-        console.log('%cNo se ha asignado comando a ese boton', COLORS.red);
+        console.log('%cNo se ha asignado comando a ese botón', COLORS.red);
     }
 }
+
+function main(): void {
+    const remoteControl = new RemoteControl();
+    const light = new Light();
+    const fan = new Fan();
+
+    // Comandos para lso dispositivos
+    const lightOnCommand = new LightOnCommand(light);
+    const lightOffCommand = new LightOffCommand(light);
+
+    const fanOnCommand = new FanOnCommand(fan);
+    const fanOffCommand = new FanOffCommand(fan);
+
+    // Asignar las acciones al control command
+    remoteControl.setCommands('1', lightOnCommand);
+    remoteControl.setCommands('2', lightOffCommand);
+    remoteControl.setCommands('3', fanOnCommand);
+    remoteControl.setCommands('4', fanOffCommand);
+
+    let continueProgram = true
+
+    do {
+        console.clear();
+        const pressedButton = prompt(
+            `Presiona un botón del control:
+                1. Encender la luz
+                2. Apagar la luz
+                3. Encender el ventilador
+                4. Apagar el ventilador
+
+            Botón: 
+            `
+        )  ?? "";
+
+        remoteControl.pressButton(pressedButton);
+
+        const continueProgramResponse = prompt(
+            `\nDesea continar? (y/n):`
+        )?.toLowerCase();
+
+        continueProgram = continueProgramResponse === 'n' ? false : true;
+    } while (continueProgram);
+}
+
+main();
