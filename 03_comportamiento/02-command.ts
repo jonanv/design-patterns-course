@@ -17,7 +17,7 @@ import console from "node:console";
 import { COLORS } from "../helpers/colors.ts";
 
 interface Command {
-    excecute(): void;
+    execute(): void;
 }
 
 class Light {
@@ -43,7 +43,7 @@ class Fan {
 class LightOnCommand implements Command {
     constructor(private light: Light) {}
     
-    excecute(): void {
+    execute(): void {
         this.light.turnOn();
     }
 }
@@ -51,7 +51,7 @@ class LightOnCommand implements Command {
 class LightOffCommand implements Command {
     constructor(private light: Light) {}
 
-    excecute(): void {
+    execute(): void {
         this.light.turnOff();
     }
 }
@@ -59,7 +59,7 @@ class LightOffCommand implements Command {
 class FanOnCommand implements Command {
     constructor(private fan: Fan) {}
     
-    excecute(): void {
+    execute(): void {
         this.fan.on();
     }
 }
@@ -67,7 +67,7 @@ class FanOnCommand implements Command {
 class FanOffCommand implements Command {
     constructor(private fan: Fan) {}
 
-    excecute(): void {
+    execute(): void {
         this.fan.off();
     }
 }
@@ -81,7 +81,7 @@ class RemoteControl {
 
     pressButton(button: string): void {
         if (this.commands[button]) {
-            this.commands[button].excecute();
+            this.commands[button].execute();
             return;
         }
 
