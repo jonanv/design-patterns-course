@@ -117,11 +117,11 @@ class Toolbar {
 
   clickButton(button: string): void {
     //TODO: Ejecutar el comando correspondiente al botón
-    // TODO: Manejar el caso en que no haya un comando asignado al botón
     if (this.commands[button]) {
-            this.commands[button].execute();
-            return;
-        }
+      // TODO: Manejar el caso en que no haya un comando asignado al botón
+      this.commands[button].execute();
+      return;
+    }
 
     console.error(`No hay un comando asignado al botón "${button}"`);
   }
