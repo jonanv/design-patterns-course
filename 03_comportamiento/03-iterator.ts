@@ -43,8 +43,8 @@ class PokemonCollection {
         return this.pokemons.length;
     }
 
-    createIterator() {
-
+    createIterator(): PokemonIterator {
+        return new PokemonIterator(this)
     }
 }
 
@@ -71,3 +71,9 @@ class PokemonIterator implements Iterator<Pokemon> {
         return this.collection.getPokemonAt(this.position);
     }
 }
+
+function main(): void {
+
+}
+
+main();
