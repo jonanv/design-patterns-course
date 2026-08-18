@@ -9,3 +9,39 @@
  *
  * https://refactoring.guru/es/design-patterns/mediator
  */
+
+class ChatRoom {
+    private users: User[] = [];
+    public title: string;
+
+    constructor(title: string) {
+        this.title = title;
+    }
+
+    addUser(user: User): void {
+        this.users.push(user)
+    }
+
+    sendMensage(sender: User, message: string): void {
+        const usersToSend = this.users.filter((user) => user !== sender);
+
+        // for (const user of this.users) {
+        //     if (user !== sender) {
+        //         user.receiveMessage(sender, message);
+        //     }
+        // }
+    }
+}
+
+class User {
+    private username: string;
+    private chatRoom: ChatRoom;
+
+    constructor(username: string) {
+        this.username = username;
+    }
+
+    receiveMessage(user: User, message: string): void {
+
+    }
+}
