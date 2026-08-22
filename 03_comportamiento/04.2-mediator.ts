@@ -46,11 +46,9 @@ class ControlTower {
   //TODO: Implementar el método sendMessage
   // sendMessage(sender: Airplane, message: string): void
   sendMessage(sender: Airplane, message: string): void {
-    const airplaneToSend = this.airplanes.filter((airplane) => airplane !== sender);
-
-    for (const airplane of airplaneToSend) {
-      airplane.receiveMessage(airplane, message);
-    }
+    this.airplanes
+      .filter((airplane) => airplane !== sender)
+      .forEach((airplane) => airplane.receiveMessage(airplane, message));
   }
 
   // Coordinación de aterrizaje
