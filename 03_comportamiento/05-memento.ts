@@ -35,15 +35,11 @@ class GameMemento {
 }
 
 class Game {
-    private level: number;
-    private health: number;
-    private position: string;
+    private level: number = 1;
+    private health: number = 100;
+    private position: string = 'Inicio';
 
-    constructor(level: number, health: number, position: string) {
-        this.level = level;
-        this.health = health;
-        this.position = position;
-
+    constructor() {
         console.log(`
             Jugando en el nivel: ${ this.level }
             salud: ${ this.health }
@@ -92,3 +88,32 @@ class GameHistory {
         return this.mementos.pop() ?? null;
     }
 }
+
+function main(): void {
+    const game = new Game();
+    const history = new GameHistory();
+
+    history.push(game.save());
+
+    // Jugador avanza en el juego
+    game.play(2, 90, 'Bosque Encantado');
+    history.push(game.save());
+
+    // Jugador avanza en el juego
+    game.play(3, 70, 'Cueva Oscura');
+    history.push(game.save());
+
+    // Jugador avanza en el juego
+    game.play(4, 50, 'Castillo del Dragón');
+    console.log('%cEstado actual', COLORS.green);
+    
+    game.restore(history.pop()!);
+    console.log('%cDespués de restaurar el último estado guardado', COLORS.green);
+
+    game.restore(history.pop()!);
+    console.log('%cDespués de estado guardado antes del anterior', COLORS.green);
+
+    console.log('\n\n');
+}
+
+main();
